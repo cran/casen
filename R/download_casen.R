@@ -17,7 +17,7 @@ descargar_casen_mds <- function(anios = NULL, carpeta = NULL) {
   stopifnot(is.character(carpeta), !is.null(carpeta), length(carpeta) == 1)
 
   # download ----
-  try(dir.create(carpeta))
+  suppressWarnings(try(dir.create(carpeta)))
 
   all_years <- c(seq(1990, 2000, 2), seq(2003, 2009, 3), seq(2011, 2017, 2))
 
@@ -90,7 +90,7 @@ descargar_casen_github <- function(anios = NULL, carpeta = NULL) {
   stopifnot(is.character(carpeta), !is.null(carpeta), length(carpeta) == 1)
   
   # download ----
-  try(dir.create(carpeta))
+  suppressWarnings(try(dir.create(carpeta)))
   
   all_years <- c(seq(1990, 2000, 2), seq(2003, 2009, 3), seq(2011, 2017, 2))
   

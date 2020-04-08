@@ -9,10 +9,14 @@
 #' media_agrupada(cd)
 #' @export
 media_agrupada <- function(disenio) {
-  estimate <- mean_median(disenio$grupos, disenio$disenio,
+  estimate <- mean_median(d_groups = disenio$grupos,
+                          des = disenio$disenio,
                           stat_fun = srvyr::survey_mean,
-                          disenio$agrupacion, disenio$conglomerado,
-                          disenio$estrato, disenio$peso, disenio$variable,
+                          agrupacion = disenio$agrupacion,
+                          conglomerado = disenio$conglomerado,
+                          estrato = disenio$estrato,
+                          peso = disenio$peso,
+                          variable = disenio$variable,
                           col_prefix = "media_")
   names(estimate) <- gsub("_low", "_inf", names(estimate))
   names(estimate) <- gsub("_upp", "_sup", names(estimate))

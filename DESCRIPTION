@@ -3,7 +3,7 @@ Type: Package
 Title: Metodos De Estimacion Con Disenio Probabilistico y Estratificado
         en Encuesta CASEN (Estimation Methods with Probabilistic
         Stratified Sampling in CASEN Survey)
-Version: 0.1.3
+Version: 0.1.4
 Authors@R: c(
       person(given = "Mauricio",
         family = "Vargas",
@@ -12,10 +12,15 @@ Authors@R: c(
         comment = c(ORCID = "0000-0003-1017-7574")),
       person(given = "Ricardo",
         family = "Aravena",
-        role = c("ths")),
+        role = "ths"),
       person(given = "Klaus",
         family = "Lehmann",
-        role = c("ctb")),
+        role = "ctb",
+        comment = "Revision de las primeras versiones del software"),
+      person(given = "Kirill",
+        family = "Muller",
+        role = "ctb",
+        comment = "Actualizacion para la compatibilidad con tibble v3.0"),
       person(family = "Pontificia Universidad Catolica de Chile",
         role = "cph"),
       person(family = "Ministerio de Desarrollo Social (MDS)",
@@ -36,22 +41,23 @@ Description: Funciones para realizar estadistica descriptiva e inferencia con el
  convert to official SUBDERE codes.)
 License: GPL-3
 Depends: R (>= 3.5.0)
-Imports: rlang, Rcpp (>= 1.0.2), stats, utils, fs, dplyr, haven,
-        labelled, glue, magrittr, tidyr, tibble, janitor, survey,
-        srvyr, purrr
+Imports: rlang, stats, utils, dplyr, haven, labelled, glue, magrittr,
+        tidyr, tibble, janitor, survey, srvyr, purrr
 Suggests: knitr, rmarkdown, covr, testthat, broom
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2020-03-19 14:22:42 UTC; pacha
+Packaged: 2020-04-08 05:30:28 UTC; pacha
 Author: Mauricio Vargas [aut, cre] (<https://orcid.org/0000-0003-1017-7574>),
   Ricardo Aravena [ths],
-  Klaus Lehmann [ctb],
+  Klaus Lehmann [ctb] (Revision de las primeras versiones del software),
+  Kirill Muller [ctb] (Actualizacion para la compatibilidad con tibble
+    v3.0),
   Pontificia Universidad Catolica de Chile [cph],
   Ministerio de Desarrollo Social (MDS) [dtc],
   Subsecretaria de Desarrollo Regional (SUBDERE) [dtc]
 Maintainer: Mauricio Vargas <mvargas@dcc.uchile.cl>
 Repository: CRAN
-Date/Publication: 2020-03-20 17:40:02 UTC
+Date/Publication: 2020-04-08 06:00:02 UTC

@@ -12,7 +12,7 @@
 
 <meta name="author" content="Mauricio Vargas" />
 
-<meta name="date" content="2020-03-19" />
+<meta name="date" content="2020-04-08" />
 
 <title>Uso basico del paquete casen</title>
 
@@ -301,7 +301,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Uso basico del paquete casen</h1>
 <h4 class="author">Mauricio Vargas</h4>
-<h4 class="date">2020-03-19</h4>
+<h4 class="date">2020-04-08</h4>
 
 
 
@@ -406,6 +406,29 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ## 12 Río Bueno       Mujer         14204         2                  713756.
 ## # … with 2 more variables: media_ytotcorh_inf &lt;dbl&gt;, media_ytotcorh_sup &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">mediana_agrupada</span>(cd)</a></code></pre></div>
+<pre><code>## Warning in vcov.svyquantile(X[[i]], ...): Only diagonal of vcov() available
+
+## Warning in vcov.svyquantile(X[[i]], ...): Only diagonal of vcov() available
+
+## Warning in vcov.svyquantile(X[[i]], ...): Only diagonal of vcov() available
+
+## Warning in vcov.svyquantile(X[[i]], ...): Only diagonal of vcov() available
+
+## Warning in vcov.svyquantile(X[[i]], ...): Only diagonal of vcov() available
+
+## Warning in vcov.svyquantile(X[[i]], ...): Only diagonal of vcov() available
+
+## Warning in vcov.svyquantile(X[[i]], ...): Only diagonal of vcov() available
+
+## Warning in vcov.svyquantile(X[[i]], ...): Only diagonal of vcov() available
+
+## Warning in vcov.svyquantile(X[[i]], ...): Only diagonal of vcov() available
+
+## Warning in vcov.svyquantile(X[[i]], ...): Only diagonal of vcov() available
+
+## Warning in vcov.svyquantile(X[[i]], ...): Only diagonal of vcov() available
+
+## Warning in vcov.svyquantile(X[[i]], ...): Only diagonal of vcov() available</code></pre>
 <pre><code>## # A tibble: 12 x 7
 ##    comuna_etiqueta sexo_etiqueta comuna_codigo sexo_codigo mediana_ytotcorh
 ##    &lt;chr&gt;           &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;                  &lt;dbl&gt;
@@ -423,7 +446,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ## 12 Río Bueno       Mujer         14204         2                    631806 
 ## # … with 2 more variables: mediana_ytotcorh_inf &lt;dbl&gt;,
 ## #   mediana_ytotcorh_sup &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">percentiles_agrupados</span>(cd)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">percentiles_agrupados</span>(cd)</a></code></pre></div>
 <pre><code>## # A tibble: 12 x 7
 ##    percentil comuna_etiqueta sexo_etiqueta comuna_codigo sexo_codigo
 ##        &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;      
@@ -446,7 +469,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <h1>Uso de las funciones de casen y dplyr</h1>
 <p>Las funciones de <code>casen</code> estan pensadas para usarse en conjunto con las de <code>dplyr</code>. Un ejemplo simple de esto es el calculo del porcentaje de hogares pobres.</p>
 <p>Veamos el caso puntual de las funciones <code>mutate</code> y <code>filter</code> de dplyr.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a></code></pre></div>
 <pre><code>## 
 ## Attaching package: 'dplyr'</code></pre>
 <pre><code>## The following objects are masked from 'package:stats':
@@ -455,11 +478,11 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <pre><code>## The following objects are masked from 'package:base':
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="co"># convierto pobreza a una variable binaria</span></a>
-<a class="sourceLine" id="cb19-2" data-line-number="2">casen_<span class="dv">2017</span>_los_rios <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb19-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">pobreza =</span> <span class="kw">ifelse</span>(pobreza <span class="op">&lt;=</span><span class="st"> </span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb19-4" data-line-number="4"><span class="st">  </span><span class="kw">configuracion_disenio</span>(<span class="st">&quot;pobreza&quot;</span>, <span class="st">&quot;comuna&quot;</span>, <span class="st">&quot;expc&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb19-5" data-line-number="5"><span class="st">  </span><span class="kw">media_agrupada</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="co"># convierto pobreza a una variable binaria</span></a>
+<a class="sourceLine" id="cb20-2" data-line-number="2">casen_<span class="dv">2017</span>_los_rios <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb20-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">pobreza =</span> <span class="kw">ifelse</span>(pobreza <span class="op">&lt;=</span><span class="st"> </span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb20-4" data-line-number="4"><span class="st">  </span><span class="kw">configuracion_disenio</span>(<span class="st">&quot;pobreza&quot;</span>, <span class="st">&quot;comuna&quot;</span>, <span class="st">&quot;expc&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb20-5" data-line-number="5"><span class="st">  </span><span class="kw">media_agrupada</span>()</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##   comuna_etiqueta comuna_codigo media_pobreza media_pobreza_inf media_pobreza_s…
 ##   &lt;chr&gt;           &lt;chr&gt;                 &lt;dbl&gt;             &lt;dbl&gt;            &lt;dbl&gt;
@@ -474,9 +497,9 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <h1>Inferencia con disenios complejos</h1>
 <p>El paquete casen provee dos funciones para sacar el maximo partido a las funciones de R tomando en cuenta el disenio complejo y los grados de libertad.</p>
 <p>Ajuste del modelo:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="co"># modelo: ytotcorh = b0 + b1 comuna + b2 sexo + e</span></a>
-<a class="sourceLine" id="cb21-2" data-line-number="2">mod &lt;-<span class="st"> </span><span class="kw">modelo_lineal_generalizado</span>(cd, <span class="st">&quot;ytotcorh ~ comuna + sexo&quot;</span>)</a>
-<a class="sourceLine" id="cb21-3" data-line-number="3"><span class="kw">summary</span>(mod)</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="co"># modelo: ytotcorh = b0 + b1 comuna + b2 sexo + e</span></a>
+<a class="sourceLine" id="cb22-2" data-line-number="2">mod &lt;-<span class="st"> </span><span class="kw">modelo_lineal_generalizado</span>(cd, <span class="st">&quot;ytotcorh ~ comuna + sexo&quot;</span>)</a>
+<a class="sourceLine" id="cb22-3" data-line-number="3"><span class="kw">summary</span>(mod)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## svyglm(formula = stats::as.formula(modelo), design = disenio$disenio)
@@ -500,8 +523,8 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <h1>Uso de las funciones de casen con paquetes “tidy”</h1>
 <p>Ademas de dplyr, casen se integra perfectamente con los paquetes del <a href="https://www.tidyverse.org/">Tidyverse</a> y otros paquetes afines.</p>
 <p>Por ejemplo, el paquete broom permite obtener una tabla con los intervalos de confianza para los betas estimados del modelo.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw">library</span>(broom)</a>
-<a class="sourceLine" id="cb23-2" data-line-number="2"><span class="kw">library</span>(survey)</a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="kw">library</span>(broom)</a>
+<a class="sourceLine" id="cb24-2" data-line-number="2"><span class="kw">library</span>(survey)</a></code></pre></div>
 <pre><code>## Loading required package: grid</code></pre>
 <pre><code>## Loading required package: Matrix</code></pre>
 <pre><code>## Loading required package: survival</code></pre>
@@ -510,16 +533,16 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <pre><code>## The following object is masked from 'package:graphics':
 ## 
 ##     dotchart</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">library</span>(janitor)</a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw">library</span>(janitor)</a></code></pre></div>
 <pre><code>## 
 ## Attaching package: 'janitor'</code></pre>
 <pre><code>## The following objects are masked from 'package:stats':
 ## 
 ##     chisq.test, fisher.test</code></pre>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="co"># usamos ddf y degf del paquete survey para hacer el mismo calculo</span></a>
-<a class="sourceLine" id="cb32-2" data-line-number="2"><span class="co"># que realiza Stata</span></a>
-<a class="sourceLine" id="cb32-3" data-line-number="3">mod_conf &lt;-<span class="st"> </span><span class="kw">confint_tidy</span>(mod, <span class="dt">ddf =</span> <span class="kw">degf</span>(cd<span class="op">$</span>disenio))</a>
-<a class="sourceLine" id="cb32-4" data-line-number="4">mod_conf</a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="co"># usamos ddf y degf del paquete survey para hacer el mismo calculo</span></a>
+<a class="sourceLine" id="cb33-2" data-line-number="2"><span class="co"># que realiza Stata</span></a>
+<a class="sourceLine" id="cb33-3" data-line-number="3">mod_conf &lt;-<span class="st"> </span><span class="kw">confint_tidy</span>(mod, <span class="dt">ddf =</span> <span class="kw">degf</span>(cd<span class="op">$</span>disenio))</a>
+<a class="sourceLine" id="cb33-4" data-line-number="4">mod_conf</a></code></pre></div>
 <pre><code>## # A tibble: 3 x 2
 ##    conf.low conf.high
 ##       &lt;dbl&gt;     &lt;dbl&gt;
@@ -527,16 +550,16 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ## 2    -5820.    -1902.
 ## 3  -105838.   -11589.</code></pre>
 <p>Lo anterior se puede ordenar y presentar los betas junto con los intervalos de confianza.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="co"># ordenamos la salida del modelo</span></a>
-<a class="sourceLine" id="cb34-2" data-line-number="2">mod_betas &lt;-<span class="st"> </span><span class="kw">tidy</span>(mod)</a>
-<a class="sourceLine" id="cb34-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb34-4" data-line-number="4"><span class="co"># pegamos las columnas</span></a>
-<a class="sourceLine" id="cb34-5" data-line-number="5">mod_betas &lt;-<span class="st"> </span><span class="kw">bind_cols</span>(mod_betas, mod_conf)</a>
-<a class="sourceLine" id="cb34-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb34-7" data-line-number="7"><span class="co"># ordenamos los nombres de las columnas</span></a>
-<a class="sourceLine" id="cb34-8" data-line-number="8">mod_betas &lt;-<span class="st"> </span><span class="kw">clean_names</span>(mod_betas)</a>
-<a class="sourceLine" id="cb34-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb34-10" data-line-number="10">mod_betas</a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="co"># ordenamos la salida del modelo</span></a>
+<a class="sourceLine" id="cb35-2" data-line-number="2">mod_betas &lt;-<span class="st"> </span><span class="kw">tidy</span>(mod)</a>
+<a class="sourceLine" id="cb35-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb35-4" data-line-number="4"><span class="co"># pegamos las columnas</span></a>
+<a class="sourceLine" id="cb35-5" data-line-number="5">mod_betas &lt;-<span class="st"> </span><span class="kw">bind_cols</span>(mod_betas, mod_conf)</a>
+<a class="sourceLine" id="cb35-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb35-7" data-line-number="7"><span class="co"># ordenamos los nombres de las columnas</span></a>
+<a class="sourceLine" id="cb35-8" data-line-number="8">mod_betas &lt;-<span class="st"> </span><span class="kw">clean_names</span>(mod_betas)</a>
+<a class="sourceLine" id="cb35-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb35-10" data-line-number="10">mod_betas</a></code></pre></div>
 <pre><code>## # A tibble: 3 x 7
 ##   term         estimate std_error statistic  p_value  conf_low conf_high
 ##   &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
@@ -548,8 +571,8 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <h1>Comparabilidad entre encuestas</h1>
 <p>El paquete casen provee un conjunto de datos con la correspondencia de los codigos de comunas.</p>
 <p>Veamos como convertir los codigos de la encuesta CASEN 1990 a codigos SUBDERE 2017.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">codigos_casen <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(valido_desde <span class="op">==</span><span class="st"> </span><span class="dv">1990</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">codigos_casen <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb37-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(valido_desde <span class="op">==</span><span class="st"> </span><span class="dv">1990</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 323 x 4
 ## # Groups:   codigo_casen, codigo_subdere_2017 [323]
 ##    valido_desde valido_hasta codigo_casen codigo_subdere_2017
@@ -565,12 +588,12 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ##  9         1990         2003         2301 02101              
 ## 10         1990         2003         8204 08302              
 ## # … with 313 more rows</code></pre>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">casen1990 &lt;-<span class="st"> </span><span class="kw">read_sav</span>(<span class="st">&quot;casen-formato-spss/1990.sav&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb38-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">comu =</span> <span class="kw">as.integer</span>(comu)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb38-3" data-line-number="3"><span class="st">  </span><span class="kw">left_join</span>(</a>
-<a class="sourceLine" id="cb38-4" data-line-number="4">    codigos_casen <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(valido_desde <span class="op">==</span><span class="st"> </span><span class="dv">1990</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="kw">starts_with</span>(<span class="st">&quot;codigo&quot;</span>)),</a>
-<a class="sourceLine" id="cb38-5" data-line-number="5">    <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;comu&quot;</span> =<span class="st"> &quot;codigo_casen&quot;</span>)</a>
-<a class="sourceLine" id="cb38-6" data-line-number="6">  )</a></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">casen1990 &lt;-<span class="st"> </span><span class="kw">read_sav</span>(<span class="st">&quot;casen-formato-spss/1990.sav&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb39-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">comu =</span> <span class="kw">as.integer</span>(comu)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb39-3" data-line-number="3"><span class="st">  </span><span class="kw">left_join</span>(</a>
+<a class="sourceLine" id="cb39-4" data-line-number="4">    codigos_casen <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(valido_desde <span class="op">==</span><span class="st"> </span><span class="dv">1990</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="kw">starts_with</span>(<span class="st">&quot;codigo&quot;</span>)),</a>
+<a class="sourceLine" id="cb39-5" data-line-number="5">    <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;comu&quot;</span> =<span class="st"> &quot;codigo_casen&quot;</span>)</a>
+<a class="sourceLine" id="cb39-6" data-line-number="6">  )</a></code></pre></div>
 </div>
 
 
