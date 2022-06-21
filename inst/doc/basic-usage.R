@@ -6,20 +6,23 @@ library(casen)
 casen_2017_los_rios
 
 ## ---- eval=FALSE--------------------------------------------------------------
-#  # todos los anios disponibles en carpeta casen-formato-spss
-#  descargar_casen_mds("casen-formato-spss")
+#  # todos los anios disponibles en carpeta casen-formato-stata
+#  descargar_casen_mds("casen-formato-stata")
 #  
-#  # solo anio 2017 en carpeta casen-formato-spss
-#  descargar_casen_mds(2017, "casen-formato-spss")
+#  # solo anio 2017 en carpeta casen-formato-stata
+#  descargar_casen_mds(2017, "casen-formato-stata")
 #  
-#  # leer encuesta CASEN en formato SAV (SPSS)
+#  # leer encuesta CASEN en formato DTA (Stata)
 #  # (se debe descomprimir con winRAR u otro)
 #  library(haven)
-#  read_sav("casen-formato-spss/2017.sav")
+#  read_stata("casen-formato-stata/Casen 2017.dta")
 
 ## ---- eval=FALSE--------------------------------------------------------------
 #  # todos los anios disponibles
 #  descargar_casen_github("casen-formato-r")
+#  
+#  # solo anio 2017
+#  descargar_casen_github(2017, "casen-formato-r")
 #  
 #  # leer encuesta CASEN en formato RDS (R)
 #  readRDS("casen-formato-r/2017.rds")

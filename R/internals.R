@@ -118,7 +118,7 @@ check_nas <- function(d) {
 #' @keywords internal
 #' @export
 mean_median <- function(d_groups, des, stat_fun, agrupacion, conglomerado, estrato, peso, variable, col_prefix) {
-  purrr::map_dfr(
+  suppressWarnings(purrr::map_dfr(
     seq_len(nrow(d_groups)),
     function(j) {
       filter_values <- d_groups %>% dplyr::slice(j)
@@ -155,5 +155,5 @@ mean_median <- function(d_groups, des, stat_fun, agrupacion, conglomerado, estra
 
       return(des2)
     }
-  )
+  ))
 }

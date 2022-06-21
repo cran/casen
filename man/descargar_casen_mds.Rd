@@ -16,8 +16,7 @@ Los archivos comprimidos de la encuesta CASEN descargados desde el
 sitio web del Ministerio de Desarrollo Social.
 }
 \description{
-Obtiene los archivos de la encuesta en formato RAR o ZIP segun
-el anio de la encuesta. No descomprime ni modifica los datasets originales.
+Obtiene los archivos de la encuesta en formato RAR. No descomprime ni modifica los datasets originales.
 }
 \examples{
 # descargar CASEN 1990 en carpeta temporal
