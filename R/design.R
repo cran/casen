@@ -1,4 +1,4 @@
-#' Diseño complejo para estadistica descriptiva e inferencia
+#' Disenio complejo para estadistica descriptiva e inferencia
 #' @description Usa los factores de expansion, conglomerados y estratos para
 #' definir un objeto de disenio complejo.
 #' @param datos un data.frame o tibble con la encuesta CASEN (o un subconjunto
@@ -13,7 +13,7 @@
 #' acuerdo al manual CASEN 2017
 #' @param estrato una columna de tipo numerico, por defecto es varunit de
 #' acuerdo al manual CASEN 2017
-#' @return Una lista con el diseño y los grupos.
+#' @return Una lista con el disenio y los grupos.
 #' @examples
 #' cd <- configuracion_disenio(casen_2017_los_rios, "ytotcorh", c("comuna", "sexo"), "expc")
 #' cd$disenio

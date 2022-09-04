@@ -2,7 +2,7 @@
 % Please edit documentation in R/descriptive_statistics.R
 \name{percentiles_agrupados}
 \alias{percentiles_agrupados}
-\title{Percentiles agrupados usando diseño complejo}
+\title{Percentiles agrupados usando disenio complejo}
 \usage{
 percentiles_agrupados(disenio, percentiles = 0.7)
 }

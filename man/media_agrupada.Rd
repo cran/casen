@@ -2,7 +2,7 @@
 % Please edit documentation in R/descriptive_statistics.R
 \name{media_agrupada}
 \alias{media_agrupada}
-\title{Media agrupada usando diseño complejo}
+\title{Media agrupada usando disenio complejo}
 \usage{
 media_agrupada(disenio)
 }

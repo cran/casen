@@ -2,7 +2,7 @@
 % Please edit documentation in R/design.R
 \name{configuracion_disenio}
 \alias{configuracion_disenio}
-\title{Diseño complejo para estadistica descriptiva e inferencia}
+\title{Disenio complejo para estadistica descriptiva e inferencia}
 \usage{
 configuracion_disenio(
   datos,
@@ -33,7 +33,7 @@ acuerdo al manual CASEN 2017}
 acuerdo al manual CASEN 2017}
 }
 \value{
-Una lista con el diseño y los grupos.
+Una lista con el disenio y los grupos.
 }
 \description{
 Usa los factores de expansion, conglomerados y estratos para

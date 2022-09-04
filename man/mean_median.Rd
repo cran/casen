@@ -2,7 +2,7 @@
 % Please edit documentation in R/internals.R
 \name{mean_median}
 \alias{mean_median}
-\title{Envolvente para estadistica descriptiva con diseños complejos}
+\title{Envolvente para estadistica descriptiva con disenios complejos}
 \usage{
 mean_median(
   d_groups,
@@ -39,6 +39,6 @@ mean_median(
 Una tabla con las medias o medianas agrupadas y su intervalo de confianza.
 }
 \description{
-Envolvente para estadistica descriptiva con diseños complejos
+Envolvente para estadistica descriptiva con disenios complejos
 }
 \keyword{internal}

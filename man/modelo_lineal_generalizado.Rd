@@ -2,7 +2,7 @@
 % Please edit documentation in R/inference.R
 \name{modelo_lineal_generalizado}
 \alias{modelo_lineal_generalizado}
-\title{Modelo lineal generalizado con diseño complejo}
+\title{Modelo lineal generalizado con disenio complejo}
 \usage{
 modelo_lineal_generalizado(disenio, modelo = "ytotcorh ~ sexo")
 }

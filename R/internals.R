@@ -38,7 +38,7 @@ clean_data <- function(datos, variable, agrupacion, peso, conglomerado, estrato)
   return(d)
 }
 
-#' Crea un objeto de diseño complejo a partir de un data frame
+#' Crea un objeto de disenio complejo a partir de un data frame
 #' @param d un data.frame o tibble con la encuesta CASEN (o un subconjunto acotado a una region, etc)
 #' @param variable una columna de tipo numerico, por ejemplo ytotcorh que es la opcion por defecto
 #' @param agrupacion una columna de tipo texto/factor, por ejemplo region que es la opcion por defecto
@@ -96,7 +96,7 @@ check_nas <- function(d) {
   }
 }
 
-#' Envolvente para estadistica descriptiva con diseños complejos
+#' Envolvente para estadistica descriptiva con disenios complejos
 #' @param d_groups un vector que sea la salida de unique_tuples()
 #' @param des disenio de encuesta a partir de un data.frame o tibble
 #' @param stat_fun la funcion a usar para la agregacion, por ejemplo srvyr::survey_mean()

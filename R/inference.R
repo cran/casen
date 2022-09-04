@@ -1,4 +1,4 @@
-#' Modelo lineal generalizado con diseño complejo
+#' Modelo lineal generalizado con disenio complejo
 #' @description Usa los factores de expansion, conglomerados y estratos para
 #' ajustar un modelo lineal generalizado con las variables definidas por el
 #' usuario.

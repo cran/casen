@@ -3,12 +3,12 @@ Type: Package
 Title: Metodos De Estimacion Con Disenio Probabilistico y Estratificado
         en Encuesta CASEN (Estimation Methods with Probabilistic
         Stratified Sampling in CASEN Survey)
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: c(
       person(given = "Mauricio",
         family = "Vargas",
         role = c("aut","cre"),
-        email = "mavargas11@uc.cl",
+        email = "hello+r@pacha.dev",
         comment = c(ORCID = "0000-0003-1017-7574")),
       person(given = "Ricardo",
         family = "Aravena",
@@ -41,16 +41,16 @@ Imports: rlang, stats, utils, dplyr, haven, labelled, glue, magrittr,
 Suggests: knitr, rmarkdown, covr, testthat, broom, janitor
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.1
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2022-06-21 06:41:31 UTC; pacha
+Packaged: 2022-09-03 21:52:56 UTC; pacha
 Author: Mauricio Vargas [aut, cre] (<https://orcid.org/0000-0003-1017-7574>),
   Ricardo Aravena [ths],
   Klaus Lehmann [ctb],
   Pontificia Universidad Catolica de Chile [cph],
   Ministerio de Desarrollo Social (MDS) [dtc],
   Subsecretaria de Desarrollo Regional (SUBDERE) [dtc]
-Maintainer: Mauricio Vargas <mavargas11@uc.cl>
+Maintainer: Mauricio Vargas <hello+r@pacha.dev>
 Repository: CRAN
-Date/Publication: 2022-06-21 07:30:10 UTC
+Date/Publication: 2022-09-04 23:20:05 UTC

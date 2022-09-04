@@ -2,7 +2,7 @@
 % Please edit documentation in R/descriptive_statistics.R
 \name{mediana_agrupada}
 \alias{mediana_agrupada}
-\title{Mediana agrupada usando diseño complejo}
+\title{Mediana agrupada usando disenio complejo}
 \usage{
 mediana_agrupada(disenio)
 }

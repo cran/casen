@@ -1,4 +1,4 @@
-#' Media agrupada usando diseño complejo
+#' Media agrupada usando disenio complejo
 #' @description Usa los factores de expansion, conglomerados y estratos para
 #' calcular correctamente las medias comunales o regionales.
 #' @param disenio la salida de `configuracion_disenio()` que provee ademas los
@@ -20,7 +20,7 @@ media_agrupada <- function(disenio) {
   return(estimate)
 }
 
-#' Mediana agrupada usando diseño complejo
+#' Mediana agrupada usando disenio complejo
 #' @description Usa los factores de expansion, conglomerados y estratos para
 #' calcular correctamente las medianas comunales o regionales.
 #' @param disenio la salida de `configuracion_disenio()` que provee ademas los
@@ -42,7 +42,7 @@ mediana_agrupada <- function(disenio) {
   return(estimate)
 }
 
-#' Percentiles agrupados usando diseño complejo
+#' Percentiles agrupados usando disenio complejo
 #' @description Usa los factores de expansion, conglomerados y estratos para
 #' calcular correctamente los percentiles comunales o regionales.
 #' @param disenio la salida de `configuracion_disenio()` que provee ademas los

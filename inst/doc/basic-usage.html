@@ -12,7 +12,7 @@
 
 <meta name="author" content="Mauricio Vargas" />
 
-<meta name="date" content="2022-06-21" />
+<meta name="date" content="2022-09-03" />
 
 <title>Uso basico del paquete casen</title>
 
@@ -122,13 +122,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -334,7 +341,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Uso basico del paquete casen</h1>
 <h4 class="author">Mauricio Vargas</h4>
-<h4 class="date">2022-06-21</h4>
+<h4 class="date">2022-09-03</h4>
 
 
 
@@ -361,7 +368,8 @@ funcion para hacerlo.</p>
 ##  8   105   141283 14128301184   260000 2 [Mujer]  14101 [Valdivia] 2 [Pobres no…
 ##  9   105   141283 14128301184   260000 2 [Mujer]  14101 [Valdivia] 2 [Pobres no…
 ## 10   105   141283 14128301184   260000 1 [Hombre] 14101 [Valdivia] 2 [Pobres no…
-## # … with 8,045 more rows</code></pre>
+## # … with 8,045 more rows
+## # ℹ Use `print(n = ...)` to see more rows</code></pre>
 </div>
 <div id="descargar-datos-desde-sitio-web-mds" class="section level1">
 <h1>Descargar datos desde sitio web MDS</h1>
@@ -489,22 +497,23 @@ confianza.</p>
 ## • Column `comuna`</code></pre>
 <pre><code>## # A tibble: 12 × 8
 ## # Groups:   comuna_etiqueta [6]
-##        comuna_etiqueta sexo_etiqueta       comuna_codigo sexo_codigo      comuna
-##              &lt;dbl+lbl&gt; &lt;chr&gt;                   &lt;dbl+lbl&gt; &lt;chr&gt;         &lt;dbl+lbl&gt;
-##  1 14101 [Valdivia]    Mujer         14101 [Valdivia]    2           14101 [Val…
-##  2 14101 [Valdivia]    Hombre        14101 [Valdivia]    1           14101 [Val…
-##  3 14104 [Los Lagos]   Hombre        14104 [Los Lagos]   1           14104 [Los…
-##  4 14104 [Los Lagos]   Mujer         14104 [Los Lagos]   2           14104 [Los…
-##  5 14107 [Paillaco]    Hombre        14107 [Paillaco]    1           14107 [Pai…
-##  6 14107 [Paillaco]    Mujer         14107 [Paillaco]    2           14107 [Pai…
-##  7 14108 [Panguipulli] Mujer         14108 [Panguipulli] 2           14108 [Pan…
-##  8 14108 [Panguipulli] Hombre        14108 [Panguipulli] 1           14108 [Pan…
-##  9 14201 [La Unión]    Hombre        14201 [La Unión]    1           14201 [La …
-## 10 14201 [La Unión]    Mujer         14201 [La Unión]    2           14201 [La …
-## 11 14204 [Río Bueno]   Hombre        14204 [Río Bueno]   1           14204 [Río…
-## 12 14204 [Río Bueno]   Mujer         14204 [Río Bueno]   2           14204 [Río…
-## # … with 3 more variables: media_ytotcorh &lt;dbl&gt;, media_ytotcorh_inf &lt;dbl&gt;,
-## #   media_ytotcorh_sup &lt;dbl&gt;</code></pre>
+##    comuna_etiq…¹ sexo_…² comuna_co…³ sexo_…⁴      comuna media…⁵ media…⁶ media…⁷
+##        &lt;dbl+lbl&gt; &lt;chr&gt;     &lt;dbl+lbl&gt; &lt;chr&gt;     &lt;dbl+lbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+##  1 14101 [Valdi… Mujer   14101 [Val… 2       14101 [Val…  1.26e6  1.03e6  1.50e6
+##  2 14101 [Valdi… Hombre  14101 [Val… 1       14101 [Val…  1.35e6  1.07e6  1.62e6
+##  3 14104 [Los L… Hombre  14104 [Los… 1       14104 [Los…  7.19e5  6.39e5  7.98e5
+##  4 14104 [Los L… Mujer   14104 [Los… 2       14104 [Los…  7.31e5  6.40e5  8.21e5
+##  5 14107 [Paill… Hombre  14107 [Pai… 1       14107 [Pai…  7.08e5  4.23e5  9.92e5
+##  6 14107 [Paill… Mujer   14107 [Pai… 2       14107 [Pai…  6.89e5  4.52e5  9.26e5
+##  7 14108 [Pangu… Mujer   14108 [Pan… 2       14108 [Pan…  6.31e5  5.38e5  7.24e5
+##  8 14108 [Pangu… Hombre  14108 [Pan… 1       14108 [Pan…  6.85e5  6.29e5  7.41e5
+##  9 14201 [La Un… Hombre  14201 [La … 1       14201 [La …  8.05e5  7.07e5  9.02e5
+## 10 14201 [La Un… Mujer   14201 [La … 2       14201 [La …  7.52e5  6.64e5  8.39e5
+## 11 14204 [Río B… Hombre  14204 [Río… 1       14204 [Río…  7.73e5  6.61e5  8.84e5
+## 12 14204 [Río B… Mujer   14204 [Río… 2       14204 [Río…  7.14e5  6.08e5  8.20e5
+## # … with abbreviated variable names ¹​comuna_etiqueta, ²​sexo_etiqueta,
+## #   ³​comuna_codigo, ⁴​sexo_codigo, ⁵​media_ytotcorh, ⁶​media_ytotcorh_inf,
+## #   ⁷​media_ytotcorh_sup</code></pre>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mediana_agrupada</span>(cd)</span></code></pre></div>
 <pre><code>## `mutate_if()` ignored the following grouping variables:
 ## `mutate_if()` ignored the following grouping variables:
@@ -545,22 +554,23 @@ confianza.</p>
 ## • Column `comuna`</code></pre>
 <pre><code>## # A tibble: 12 × 8
 ## # Groups:   comuna_etiqueta [6]
-##        comuna_etiqueta sexo_etiqueta       comuna_codigo sexo_codigo      comuna
-##              &lt;dbl+lbl&gt; &lt;chr&gt;                   &lt;dbl+lbl&gt; &lt;chr&gt;         &lt;dbl+lbl&gt;
-##  1 14101 [Valdivia]    Mujer         14101 [Valdivia]    2           14101 [Val…
-##  2 14101 [Valdivia]    Hombre        14101 [Valdivia]    1           14101 [Val…
-##  3 14104 [Los Lagos]   Hombre        14104 [Los Lagos]   1           14104 [Los…
-##  4 14104 [Los Lagos]   Mujer         14104 [Los Lagos]   2           14104 [Los…
-##  5 14107 [Paillaco]    Hombre        14107 [Paillaco]    1           14107 [Pai…
-##  6 14107 [Paillaco]    Mujer         14107 [Paillaco]    2           14107 [Pai…
-##  7 14108 [Panguipulli] Mujer         14108 [Panguipulli] 2           14108 [Pan…
-##  8 14108 [Panguipulli] Hombre        14108 [Panguipulli] 1           14108 [Pan…
-##  9 14201 [La Unión]    Hombre        14201 [La Unión]    1           14201 [La …
-## 10 14201 [La Unión]    Mujer         14201 [La Unión]    2           14201 [La …
-## 11 14204 [Río Bueno]   Hombre        14204 [Río Bueno]   1           14204 [Río…
-## 12 14204 [Río Bueno]   Mujer         14204 [Río Bueno]   2           14204 [Río…
-## # … with 3 more variables: mediana_ytotcorh &lt;dbl&gt;, mediana_ytotcorh_inf &lt;dbl&gt;,
-## #   mediana_ytotcorh_sup &lt;dbl&gt;</code></pre>
+##    comuna_etiq…¹ sexo_…² comuna_co…³ sexo_…⁴      comuna media…⁵ media…⁶ media…⁷
+##        &lt;dbl+lbl&gt; &lt;chr&gt;     &lt;dbl+lbl&gt; &lt;chr&gt;     &lt;dbl+lbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+##  1 14101 [Valdi… Mujer   14101 [Val… 2       14101 [Val…  900000  794484 1005866
+##  2 14101 [Valdi… Hombre  14101 [Val… 1       14101 [Val…  914646  810887 1047226
+##  3 14104 [Los L… Hombre  14104 [Los… 1       14104 [Los…  613990  579550  645000
+##  4 14104 [Los L… Mujer   14104 [Los… 2       14104 [Los…  635936  582273  665000
+##  5 14107 [Paill… Hombre  14107 [Pai… 1       14107 [Pai…  553684  450000  710646
+##  6 14107 [Paill… Mujer   14107 [Pai… 2       14107 [Pai…  532732  393687  996667
+##  7 14108 [Pangu… Mujer   14108 [Pan… 2       14108 [Pan…  532472  531391  552156
+##  8 14108 [Pangu… Hombre  14108 [Pan… 1       14108 [Pan…  560000  531391  632064
+##  9 14201 [La Un… Hombre  14201 [La … 1       14201 [La …  624669  564167  699167
+## 10 14201 [La Un… Mujer   14201 [La … 2       14201 [La …  573938  522321  698745
+## 11 14204 [Río B… Hombre  14204 [Río… 1       14204 [Río…  707156  577642  757785
+## 12 14204 [Río B… Mujer   14204 [Río… 2       14204 [Río…  631806  513536  730000
+## # … with abbreviated variable names ¹​comuna_etiqueta, ²​sexo_etiqueta,
+## #   ³​comuna_codigo, ⁴​sexo_codigo, ⁵​mediana_ytotcorh, ⁶​mediana_ytotcorh_inf,
+## #   ⁷​mediana_ytotcorh_sup</code></pre>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">percentiles_agrupados</span>(cd)</span></code></pre></div>
 <pre><code>## `mutate_if()` ignored the following grouping variables:
 ## `mutate_if()` ignored the following grouping variables:
@@ -601,22 +611,22 @@ confianza.</p>
 ## • Column `comuna`</code></pre>
 <pre><code>## # A tibble: 12 × 8
 ## # Groups:   comuna_etiqueta [6]
-##    percentil comuna_etiqueta sexo_etiqueta comuna_codigo sexo_codigo      comuna
-##        &lt;dbl&gt;       &lt;dbl+lbl&gt; &lt;chr&gt;             &lt;dbl+lbl&gt; &lt;chr&gt;         &lt;dbl+lbl&gt;
-##  1       0.7 14101 [Valdivi… Mujer         14101 [Valdi… 2           14101 [Val…
-##  2       0.7 14101 [Valdivi… Hombre        14101 [Valdi… 1           14101 [Val…
-##  3       0.7 14104 [Los Lag… Hombre        14104 [Los L… 1           14104 [Los…
-##  4       0.7 14104 [Los Lag… Mujer         14104 [Los L… 2           14104 [Los…
-##  5       0.7 14107 [Paillac… Hombre        14107 [Paill… 1           14107 [Pai…
-##  6       0.7 14107 [Paillac… Mujer         14107 [Paill… 2           14107 [Pai…
-##  7       0.7 14108 [Panguip… Mujer         14108 [Pangu… 2           14108 [Pan…
-##  8       0.7 14108 [Panguip… Hombre        14108 [Pangu… 1           14108 [Pan…
-##  9       0.7 14201 [La Unió… Hombre        14201 [La Un… 1           14201 [La …
-## 10       0.7 14201 [La Unió… Mujer         14201 [La Un… 2           14201 [La …
-## 11       0.7 14204 [Río Bue… Hombre        14204 [Río B… 1           14204 [Río…
-## 12       0.7 14204 [Río Bue… Mujer         14204 [Río B… 2           14204 [Río…
-## # … with 2 more variables: mediana_ytotcorh &lt;dbl&gt;,
-## #   mediana_ytotcorh_err_est &lt;dbl&gt;</code></pre>
+##    percentil comuna_et…¹ sexo_…² comuna_co…³ sexo_…⁴      comuna media…⁵ media…⁶
+##        &lt;dbl&gt;   &lt;dbl+lbl&gt; &lt;chr&gt;     &lt;dbl+lbl&gt; &lt;chr&gt;     &lt;dbl+lbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+##  1       0.7 14101 [Val… Mujer   14101 [Val… 2       14101 [Val… 1268480 101816.
+##  2       0.7 14101 [Val… Hombre  14101 [Val… 1       14101 [Val… 1300000 100874.
+##  3       0.7 14104 [Los… Hombre  14104 [Los… 1       14104 [Los…  853162  25455.
+##  4       0.7 14104 [Los… Mujer   14104 [Los… 2       14104 [Los…  853162  50598.
+##  5       0.7 14107 [Pai… Hombre  14107 [Pai… 1       14107 [Pai…  796676 215415.
+##  6       0.7 14107 [Pai… Mujer   14107 [Pai… 2       14107 [Pai…  792246 224112.
+##  7       0.7 14108 [Pan… Mujer   14108 [Pan… 2       14108 [Pan…  700000  57176.
+##  8       0.7 14108 [Pan… Hombre  14108 [Pan… 1       14108 [Pan…  784167  40130.
+##  9       0.7 14201 [La … Hombre  14201 [La … 1       14201 [La …  821331  24642.
+## 10       0.7 14201 [La … Mujer   14201 [La … 2       14201 [La …  786368  58745.
+## 11       0.7 14204 [Río… Hombre  14204 [Río… 1       14204 [Río…  836333  42714.
+## 12       0.7 14204 [Río… Mujer   14204 [Río… 2       14204 [Río…  769578  56308.
+## # … with abbreviated variable names ¹​comuna_etiqueta, ²​sexo_etiqueta,
+## #   ³​comuna_codigo, ⁴​sexo_codigo, ⁵​mediana_ytotcorh, ⁶​mediana_ytotcorh_err_est</code></pre>
 </div>
 <div id="uso-de-las-funciones-de-casen-y-dplyr" class="section level1">
 <h1>Uso de las funciones de casen y dplyr</h1>
@@ -640,14 +650,15 @@ calculo del porcentaje de hogares pobres.</p>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">configuracion_disenio</span>(<span class="st">&quot;pobreza&quot;</span>, <span class="st">&quot;comuna&quot;</span>, <span class="st">&quot;expc&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">media_agrupada</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 5
-##   comuna_etiqueta comuna_codigo media_pobreza media_pobreza_inf media_pobreza_s…
+##   comuna_etiqueta comuna_codigo media_pobreza media_pobreza_inf media_pobreza_…¹
 ##   &lt;chr&gt;           &lt;chr&gt;                 &lt;dbl&gt;             &lt;dbl&gt;            &lt;dbl&gt;
 ## 1 Valdivia        14101                0.0753            0.0513           0.0993
 ## 2 Los Lagos       14104                0.156             0.104            0.209 
 ## 3 Paillaco        14107                0.209            -0.0754           0.494 
 ## 4 Panguipulli     14108                0.133             0.0928           0.173 
 ## 5 La Unión        14201                0.132             0.0656           0.198 
-## 6 Río Bueno       14204                0.170             0.0736           0.266</code></pre>
+## 6 Río Bueno       14204                0.170             0.0736           0.266 
+## # … with abbreviated variable name ¹​media_pobreza_sup</code></pre>
 </div>
 <div id="inferencia-con-disenios-complejos" class="section level1">
 <h1>Inferencia con disenios complejos</h1>
@@ -753,7 +764,8 @@ SUBDERE 2017.</p>
 ##  8         1990         2003         9101 09201              
 ##  9         1990         2003         2301 02101              
 ## 10         1990         2003         8204 08302              
-## # … with 313 more rows</code></pre>
+## # … with 313 more rows
+## # ℹ Use `print(n = ...)` to see more rows</code></pre>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>casen1990 <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">&quot;casen-formato-spss/1990.sav&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">comu =</span> <span class="fu">as.integer</span>(comu)) <span class="sc">%&gt;%</span> </span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(</span>

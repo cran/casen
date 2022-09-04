@@ -2,7 +2,7 @@
 % Please edit documentation in R/internals.R
 \name{create_design}
 \alias{create_design}
-\title{Crea un objeto de diseño complejo a partir de un data frame}
+\title{Crea un objeto de disenio complejo a partir de un data frame}
 \usage{
 create_design(d, variable, agrupacion, peso, conglomerado, estrato)
 }
@@ -23,6 +23,6 @@ create_design(d, variable, agrupacion, peso, conglomerado, estrato)
 Un objeto de disenio a partir del objeto data.frame de entrada.
 }
 \description{
-Crea un objeto de diseño complejo a partir de un data frame
+Crea un objeto de disenio complejo a partir de un data frame
 }
 \keyword{internal}
